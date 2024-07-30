@@ -31,6 +31,9 @@ export default function Header() {
   return (
     <header style={headerStyle}>
       <nav style={navStyle}>
+        <Link href='/' style={linkStyle}>
+          Home
+        </Link>
         <Link href='/auth/login' style={linkStyle}>
           Login
         </Link>
