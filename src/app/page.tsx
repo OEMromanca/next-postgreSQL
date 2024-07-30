@@ -12,6 +12,7 @@ export default async function Home() {
             <li key={user.id}>
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
+              <p>Id: {user.id}</p>
             </li>
           ))}
         </ul>
