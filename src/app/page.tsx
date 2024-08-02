@@ -1,6 +1,17 @@
+import { cookies } from 'next/headers';
+import DeleteButton from './components/DeleteButton';
 import { fetchData } from './lib/data';
+import { redirect } from 'next/navigation';
 
 export default async function Home() {
+  const cookieStore = cookies();
+  const token = cookieStore.get('token');
+  const csrfToken = cookieStore.get('csrfToken');
+
+  if (!token || !csrfToken) {
+    return redirect('/auth/login');
+  }
+
   const users = await fetchData();
 
   return (
@@ -13,6 +24,7 @@ export default async function Home() {
               <p>Username: {user.username}</p>
               <p>Email: {user.email}</p>
               <p>Id: {user.id}</p>
+              <DeleteButton id={user.id} />
             </li>
           ))}
         </ul>

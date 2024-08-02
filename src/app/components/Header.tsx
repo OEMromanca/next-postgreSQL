@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { logoutUser } from '@/app/lib/data';
 
 export default function Header() {
   const headerStyle = {
@@ -28,6 +29,14 @@ export default function Header() {
     transition: 'background-color 0.3s, color 0.3s',
   };
 
+  const buttonStyle = {
+    ...linkStyle,
+    cursor: 'pointer',
+    backgroundColor: 'transparent',
+    border: 'none',
+    outline: 'none',
+  };
+
   return (
     <header style={headerStyle}>
       <nav style={navStyle}>
@@ -40,6 +49,11 @@ export default function Header() {
         <Link href='/auth/register' style={linkStyle}>
           Register
         </Link>
+        <form action={logoutUser} style={{ margin: 0 }}>
+          <button type='submit' style={buttonStyle}>
+            Logout
+          </button>
+        </form>
       </nav>
     </header>
   );
