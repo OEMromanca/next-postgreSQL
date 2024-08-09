@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { logoutUser } from '@/app/lib/data';
+import { signOut } from '../auth';
 
 export default function Header() {
   const headerStyle = {
@@ -43,13 +43,19 @@ export default function Header() {
         <Link href='/' style={linkStyle}>
           Home
         </Link>
-        <Link href='/auth/login' style={linkStyle}>
-          Login
+        <Link href='/auth/signIn' style={linkStyle}>
+          SignIn
         </Link>
         <Link href='/auth/register' style={linkStyle}>
           Register
         </Link>
-        <form action={logoutUser} style={{ margin: 0 }}>
+        <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+          style={{ margin: 0 }}
+        >
           <button type='submit' style={buttonStyle}>
             Logout
           </button>
