@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { auth } from '../auth';
-import { User } from '../user/page';
+import User from '../user/page';
 
 export default async function Dashboard() {
   const session = await auth();
