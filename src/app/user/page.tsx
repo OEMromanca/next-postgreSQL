@@ -5,7 +5,7 @@ interface UserProps {
   session: Session;
 }
 
-export const User: React.FC<UserProps> = ({ session }) => {
+const User: React.FC<UserProps> = ({ session }) => {
   return (
     <div>
       <h1>Username:</h1>
@@ -15,3 +15,5 @@ export const User: React.FC<UserProps> = ({ session }) => {
     </div>
   );
 };
+
+export default User;
